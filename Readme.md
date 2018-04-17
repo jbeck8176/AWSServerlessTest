@@ -2,7 +2,7 @@
 
 This project shows how to run an ASP.NET Core Web API project as an AWS Lambda exposed through Amazon API Gateway. The NuGet package [Amazon.Lambda.AspNetCoreServer](https://www.nuget.org/packages/Amazon.Lambda.AspNetCoreServer) contains a Lambda function that is used to translate requests from API Gateway into the ASP.NET Core framework and then the responses from ASP.NET Core back to API Gateway.
 
-This project was started with the intention of migrating siloable API actions away from our current RenovoLive2 API backend and over to a AWS Lambda based .NET Core 2 Web API. 
+This project was started with the intention of providing a example and POC for migrating siloable API actions away from our current RenovoLive2 API backend and over to a AWS Lambda based .NET Core 2 Web API. 
 
 
 ### Configuring AWS SDK for .NET ###
