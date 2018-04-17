@@ -56,29 +56,29 @@ public void ConfigureServices(IServiceCollection services)
 
 Once the AWS Api Gateway and Lambda is setup you will then have to alter a few of the deployment scripts. All scripts can be found in /build
 
-### Build Step 1 (01_Restore.cmd): ###
-project name agnostic, should never have to change.
-### Build Step 2 (02_Build.cmd): ###
-project name agnostic, should never have to change.
-### Build Step 3 (03_UnitTest.cmd): ###
-This is dependant on the name of the unit test project.
-```
-dotnet test ..\src\[FOLDER OF UNIT TEST PROJECT]\
-```
-### Build Step 4 (04_SlowTest.cmd): ###
-This is dependant on the name of the slow test project.
-```
-dotnet test ..\src\[FOLDER OF SLOW TEST PROJECT]\
-```
-### Build Step 5 (05_Package.cmd): ###
-This is dependant on the name of the api project.
-```
-cd ..\src\[FOLDER OF THE API PROJECT]\
-dotnet lambda package
-```
-### Build Step 6 (06_Deploy.cmd): ###
-This is dependant on the name of the api project, name if the AWS Lambda name, and the framework version.
-```
-cd ..\src\[FOLDER OF THE API PROJECT]\
-dotnet lambda deploy-function [NAME OF LAMBDA FUNCTION] -pac .\bin\Release\[FRAMEWORK]\[NAME OF API PROJECT].zip
-```
+1. **Build Step 1 (01_Restore.cmd):**
+    * project name agnostic, should never have to change.
+2. **Build Step 2 (02_Build.cmd):**
+    * project name agnostic, should never have to change.
+3. **Build Step 3 (03_UnitTest.cmd):**
+    * This is dependant on the name of the unit test project.
+    ```
+    dotnet test ..\src\[FOLDER OF UNIT TEST PROJECT]\
+    ```
+4. **Build Step 4 (04_SlowTest.cmd):**
+    * This is dependant on the name of the slow test project.
+    ```
+    dotnet test ..\src\[FOLDER OF SLOW TEST PROJECT]\
+    ```
+5. **Build Step 5 (05_Package.cmd):**
+    * This is dependant on the name of the api project.
+    ```
+    cd ..\src\[FOLDER OF THE API PROJECT]\
+    dotnet lambda package
+    ```
+6. **Build Step 6 (06_Deploy.cmd):**
+    * This is dependant on the name of the api project, name if the AWS Lambda name, and the framework version.
+    ```
+    cd ..\src\[FOLDER OF THE API PROJECT]\
+    dotnet lambda deploy-function [NAME OF LAMBDA FUNCTION] -pac .\bin\Release\[FRAMEWORK]\[NAME OF API PROJECT].zip
+    ```
