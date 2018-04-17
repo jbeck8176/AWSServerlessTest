@@ -1,12 +1,11 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using AWSServerlessApiTest.Data.Models;
+using AWSServerlessApiTest.Data.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 
 namespace AWSServerlessApiTest
 {
@@ -23,6 +22,19 @@ namespace AWSServerlessApiTest
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+
+	        var sqlConnectionSettingsString = Environment.GetEnvironmentVariable("SQLConnectionSettings");
+
+	        var sqlConnectionSettings = new SQLConnectionSettings();
+
+
+			if (!string.IsNullOrEmpty(sqlConnectionSettingsString))
+	        {
+		        sqlConnectionSettings = JsonConvert.DeserializeObject<SQLConnectionSettings>(sqlConnectionSettingsString);
+			}
+
+	        services.AddSingleton<ISQLConnectionSettings>(sqlConnectionSettings);
+	        services.AddTransient<IWidgetRepository, WidgetRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline
