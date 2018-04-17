@@ -21,24 +21,12 @@ public void ConfigureServices(IServiceCollection services)
 
 ### Project Files ###
 
-* serverless.template - an AWS CloudFormation Serverless Application Model template file for declaring your Serverless functions and other AWS resources
 * aws-lambda-tools-defaults.json - default argument settings for use with Visual Studio and command line deployment tools for AWS
 * LambdaEntryPoint.cs - class that derives from **Amazon.Lambda.AspNetCoreServer.APIGatewayProxyFunction**. The code in this file bootstraps the ASP.NET Core hosting framework. The Lambda function is defined in the base class.
 * LocalEntryPoint.cs - for local development this contains the executable Main function which bootstraps the ASP.NET Core hosting framework with Kestrel, as for typical ASP.NET Core applications.
 * Startup.cs - usual ASP.NET Core Startup class used to configure the services ASP.NET Core will use.
 * web.config - used for local development.
-* Controllers\S3ProxyController - Web API controller for proxying an S3 bucket
 * Controllers\ValuesController - example Web API controller
-
-You may also have a test project depending on the options selected.
-
-The generated project contains a Serverless template declaration for a single AWS Lambda function that will be exposed through Amazon API Gateway as a HTTP *Get* operation. Edit the template to customize the function or add more functions and other resources needed by your application, and edit the function code in Function.cs. You can then deploy your Serverless application.
-
-## Here are some steps to follow from Visual Studio:
-
-To deploy your Serverless application, right click the project in Solution Explorer and select *Publish to AWS Lambda*.
-
-To view your deployed application open the Stack View window by double-clicking the stack name shown beneath the AWS CloudFormation node in the AWS Explorer tree. The Stack View also displays the root URL to your published application.
 
 ## Here are some steps to follow to get started from the command line:
 
@@ -59,5 +47,5 @@ Execute unit tests
 Deploy application
 ```
     cd "AWSServerlessApiTest/src/AWSServerlessApiTest"
-    dotnet lambda deploy-serverless
+    dotnet lambda deploy-function
 ```
